@@ -1,0 +1,224 @@
+﻿/* Return Policy Luxury Design */
+/* Inherits base styles from privacy-policy.css */
+
+.condition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.condition-card {
+  background: var(--gradient-soft);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  border: 2px solid var(--rose-gold);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.condition-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  background: var(--blush);
+}
+
+.condition-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.condition-icon i {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.condition-card h3 {
+  color: var(--charcoal);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.condition-card p {
+  color: var(--warm-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 50px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gradient-primary);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 56px;
+  height: 56px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 1;
+}
+
+.timeline-content {
+  background: var(--soft-pink);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--rose-gold);
+  transition: all var(--transition-base);
+}
+
+.timeline-content:hover {
+  background: var(--blush);
+  transform: translateX(8px);
+}
+
+.timeline-content h4 {
+  color: var(--charcoal);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.timeline-content p {
+  color: var(--warm-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.process-steps {
+  display: grid;
+  gap: 24px;
+}
+
+.process-step {
+  display: flex;
+  gap: 24px;
+  align-items: start;
+  background: var(--light-gray);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--rose-gold);
+  transition: all var(--transition-base);
+}
+
+.process-step:hover {
+  background: var(--soft-pink);
+  transform: translateX(8px);
+}
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: var(--font-serif);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.step-content h4 {
+  color: var(--charcoal);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.step-content p {
+  color: var(--warm-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.warning-box {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-left: 4px solid #ef4444;
+  padding: 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.no-return-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.no-return-list li {
+  color: #7f1d1d;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  padding: 16px 0;
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+
+.no-return-list i {
+  color: #ef4444;
+  font-size: 1.3rem;
+  margin-top: 4px;
+}
+
+.b2b-note {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-left: 4px solid #3b82f6;
+  padding: 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.b2b-note p {
+  color: #1e40af;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .condition-grid { grid-template-columns: 1fr; }
+  .timeline { padding-left: 40px; }
+  .timeline-badge { left: -45px; width: 48px; height: 48px; font-size: 0.8rem; }
+  .process-step { flex-direction: column; gap: 20px; }
+  .step-number { width: 48px; height: 48px; font-size: 1.3rem; }
+}

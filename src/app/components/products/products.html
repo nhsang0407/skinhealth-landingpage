@@ -1,0 +1,95 @@
+﻿<section class="section products-section" id="products">
+  <div class="products-container">
+    <div class="products-layout">
+      <div class="products-header">
+        <h2 class="products-main-title">
+          Sản phẩm<br>
+          <span class="title-highlight">BÁN CHẠY</span>
+        </h2>
+        <p class="products-subtitle">
+          SkinHealth tự hào khi các sản phẩm mà chúng tôi tạo ra mang<br>
+          đến những thay đổi tuyệt vời trên làn da, mái tóc của bạn.
+        </p>
+      </div>
+
+      <div class="products-carousel">
+        <div class="products-wrapper">
+          <div class="products-grid" [style.transform]="'translateX(' + currentSlide * -100 + '%)'">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="/assets/images/product-cleanser.png" alt="Bộ sữa rửa mặt dạng dầu" class="product-image" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bộ sữa rửa mặt dạng dầu SkinN</h3>
+            <p class="product-category">LÀM SẠCH DỊU NHẸ, CÂN BẰNG ĐỘ ẨM</p>
+            <div class="product-footer">
+              <span class="product-price">285.000 đ</span>
+              <button class="add-to-cart" aria-label="Add to cart">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="/assets/images/product-serum.png" alt="Serum dưỡng ẩm" class="product-image" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Serum dưỡng ẩm SkinN Lifting Wrinkle Elasticity Quick-drying Care Moisture Large Capacity 90ml</h3>
+            <p class="product-category">CẤP ẨM TỨC THÌ, CĂNG BÓNG NÂNG CƠ</p>
+            <div class="product-footer">
+              <span class="product-price">450.000 đ</span>
+              <button class="add-to-cart" aria-label="Add to cart">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="/assets/images/product-cream.png" alt="Kem dưỡng da mùa đông" class="product-image" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Kem dưỡng da mùa đông SkinN Sea Cucumber Aqua Hyaluroni 80g</h3>
+            <p class="product-category">KHÓA ẨM CHUYÊN SÂU, PHỤC HỒI DA YẾU</p>
+            <div class="product-footer">
+              <span class="product-price">520.000 đ</span>
+              <button class="add-to-cart" aria-label="Add to cart">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="/assets/images/product-mask.png" alt="Kem chống nắng" class="product-image" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Kem chống nắng hỗn hợp ceramide 50ml</h3>
+            <p class="product-category">CHỐNG NẮNG PHỔ RỘNG, BẢO VỆ DỊU NHẸ</p>
+            <div class="product-footer">
+              <span class="product-price">380.000 đ</span>
+              <button class="add-to-cart" aria-label="Add to cart">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-nav prev" (click)="prevSlide()" [disabled]="currentSlide === 0" aria-label="Previous">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" (click)="nextSlide()" [disabled]="currentSlide === 1" aria-label="Next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

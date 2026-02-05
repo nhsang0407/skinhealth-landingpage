@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<section class="faqs-section">
+  <div class="container">
+    <div class="section-header">
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about our ODM services</p>
+    </div>
+
+    <div class="faqs-container">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="faq.open">
+        <div class="faq-question" (click)="toggleFaq(i)">
+          <h3>{{ faq.question }}</h3>
+          <span class="toggle-icon">{{ faq.open ? 'âˆ’' : '+' }}</span>
+        </div>
+        <div class="faq-answer" [class.show]="faq.open">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cta">
+      <h2>Still have questions?</h2>
+      <p>Contact our team for more information</p>
+      <a routerLink="/odm" class="cta-button">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,98 @@
+﻿<section class="section newsletter-section" id="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-header">
+        <h2 class="section-title">Đăng ký nhận tư vấn miễn phí</h2>
+        <p class="section-subtitle">Để lại thông tin, chuyên gia của chúng tôi sẽ liên hệ trong 24h để tư vấn giải pháp phù hợp nhất cho doanh nghiệp của bạn</p>
+      </div>
+
+      <form class="newsletter-form" (ngSubmit)="onSubmit()" #newsletterForm="ngForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Họ và tên *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="formData.name" 
+              placeholder="Nguyễn Văn A" 
+              required 
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="formData.email" 
+              placeholder="email@example.com" 
+              required 
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              [(ngModel)]="formData.phone" 
+              placeholder="090 123 4567" 
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="business">Loại hình kinh doanh</label>
+            <select 
+              id="business" 
+              name="business" 
+              [(ngModel)]="formData.business" 
+              class="form-control"
+            >
+              <option value="">-- Chọn loại hình --</option>
+              <option value="spa">Spa / Thẩm mỹ viện</option>
+              <option value="clinic">Phòng khám da liễu</option>
+              <option value="retail">Cửa hàng bán lẻ</option>
+              <option value="brand">Thương hiệu mỹ phẩm</option>
+              <option value="other">Khác</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input 
+              type="checkbox" 
+              name="agree" 
+              [(ngModel)]="formData.agree" 
+              required
+            />
+            <span>Tôi đồng ý nhận thông tin tư vấn và ưu đãi từ SkinHealth</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!newsletterForm.valid">
+          <i class="fas fa-paper-plane"></i>
+          Đăng ký ngay
+        </button>
+
+        <p class="form-note">* Thông tin của bạn sẽ được bảo mật tuyệt đối</p>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-error">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
