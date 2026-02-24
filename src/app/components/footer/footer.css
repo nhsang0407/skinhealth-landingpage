@@ -62,16 +62,15 @@
   transition: all var(--transition-base);
 }
 
+.footer-logo .logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
 .footer-logo:hover {
   transform: translateY(-2px);
   filter: brightness(1.2);
-}
-
-.footer-logo i {
-  font-size: 1.6rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .footer-desc {

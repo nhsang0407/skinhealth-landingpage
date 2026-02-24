@@ -1,9 +1,22 @@
 ﻿<header class="header">
+  <!-- Cherry Blossom Animation -->
+  <div class="cherry-blossom-container">
+    <div class="cherry-blossom" *ngFor="let petal of petals" [style.left.%]="petal.left" [style.animation-delay]="petal.delay + 's'" [style.animation-duration]="petal.duration + 's'">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 2C12 2 10 6 10 8C10 10 11 11 12 11C13 11 14 10 14 8C14 6 12 2 12 2Z" fill="#FFB7C5" opacity="0.8"/>
+        <path d="M12 11C12 11 8 9 6 9C4 9 3 10 3 11C3 12 4 13 6 13C8 13 12 11 12 11Z" fill="#FFC0CB" opacity="0.7"/>
+        <path d="M12 11C12 11 16 9 18 9C20 9 21 10 21 11C21 12 20 13 18 13C16 13 12 11 12 11Z" fill="#FFD4E5" opacity="0.7"/>
+        <path d="M12 11C12 11 10 15 10 17C10 19 11 20 12 20C13 20 14 19 14 17C14 15 12 11 12 11Z" fill="#FFAFC0" opacity="0.8"/>
+        <circle cx="12" cy="11" r="2" fill="#FFE4E1"/>
+      </svg>
+    </div>
+  </div>
+
   <div class="container">
     <div class="header-content">
       <div class="logo">
         <div class="logo-icon">
-          <i class="fa-solid fa-leaf"></i>
+          <img src="/assets/images/logo.png" alt="SkinHealth Logo" class="logo-img">
         </div>
         <span class="logo-text">SkinHealth</span>
       </div>

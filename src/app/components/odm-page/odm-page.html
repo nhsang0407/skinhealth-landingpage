@@ -1,21 +1,58 @@
+<!-- HEADER VỚI HOA ANH ĐÀO -->
+<header class="odm-header">
+  <!-- Cherry Blossom Animation -->
+  <div class="cherry-blossom-container">
+    <div class="cherry-blossom" *ngFor="let petal of petals" [style.left.%]="petal.left" [style.animation-delay]="petal.delay + 's'" [style.animation-duration]="petal.duration + 's'">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 2C12 2 10 6 10 8C10 10 11 11 12 11C13 11 14 10 14 8C14 6 12 2 12 2Z" fill="#FFB7C5" opacity="0.8"/>
+        <path d="M12 11C12 11 8 9 6 9C4 9 3 10 3 11C3 12 4 13 6 13C8 13 12 11 12 11Z" fill="#FFC0CB" opacity="0.7"/>
+        <path d="M12 11C12 11 16 9 18 9C20 9 21 10 21 11C21 12 20 13 18 13C16 13 12 11 12 11Z" fill="#FFD4E5" opacity="0.7"/>
+        <path d="M12 11C12 11 10 15 10 17C10 19 11 20 12 20C13 20 14 19 14 17C14 15 12 11 12 11Z" fill="#FFAFC0" opacity="0.8"/>
+        <circle cx="12" cy="11" r="2" fill="#FFE4E1"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="odm-header-content">
+      <div class="odm-logo">
+        <div class="odm-logo-icon">
+          <img src="/assets/images/logo.png" alt="SkinHealth Logo" class="odm-logo-img">
+        </div>
+        <span class="odm-logo-text">SkinHealth</span>
+      </div>
+    </div>
+  </div>
+</header>
+
 <!-- PHẦN 1: HERO SECTION -->
 <section class="odm-hero">
-  <div class="odm-hero-video">
-    <div class="odm-hero-overlay"></div>
-  </div>
-  <div class="container odm-hero-content">
-    <h1 class="odm-hero-title">SkinHealth – Nơi vẻ đẹp bắt đầu từ sự thấu hiểu.</h1>
-    <p class="odm-hero-subtitle">
-      Đối tác chiến lược gia công mỹ phẩm chuẩn Hàn Quốc. Chúng tôi lắng nghe tiếng nói của làn da 
-      để kiến tạo công thức độc quyền, giúp bạn sở hữu thương hiệu riêng với chất lượng Quốc tế.
-    </p>
-    <div class="odm-hero-actions">
-      <a href="#contact-form" class="btn btn-primary btn-lg">
-        <i class="fas fa-handshake"></i> ĐĂNG KÝ TƯ VẤN OEM/ODM
-      </a>
-      <a href="#workflow" class="btn btn-outline btn-lg">
-        <i class="fas fa-file-alt"></i> XEM HỒ SƠ NĂNG LỰC
-      </a>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="odm-hero-content">
+      <p class="hero-badge">
+        <i class="fa-solid fa-certificate"></i>
+        DƯỢC MỸ PHẨM CAO CẤP HÀN QUỐC
+      </p>
+      
+      <h1 class="odm-hero-title">
+        SkinHealth – Nơi vẻ đẹp<br>
+        bắt đầu từ <span class="highlight">sự thấu hiểu.</span>
+      </h1>
+      
+      <p class="odm-hero-subtitle">
+        Đối tác chiến lược gia công mỹ phẩm chuẩn Hàn Quốc. Chúng tôi lắng nghe tiếng nói của làn da 
+        để kiến tạo công thức độc quyền, giúp bạn sở hữu thương hiệu riêng với chất lượng Quốc tế.
+      </p>
+      
+      <div class="odm-hero-actions">
+        <button (click)="scrollToContactForm()" class="btn btn-primary btn-lg">
+          <i class="fas fa-handshake"></i> ĐĂNG KÝ TƯ VẤN OEM/ODM
+        </button>
+        <a href="#workflow" class="btn btn-outline btn-lg">
+          <i class="fas fa-file-alt"></i> XEM HỒ SƠ NĂNG LỰC
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -24,182 +61,217 @@
 <section class="section odm-why-us">
   <div class="container">
     <div class="section-header">
-      <span class="section-badge">⭐ Tại sao chọn chúng tôi</span>
       <h2 class="section-title">Năng Lực Cốt Lõi</h2>
     </div>
     
     <div class="odm-capabilities">
       <div class="capability-card">
         <div class="capability-icon">
-          <i class="fas fa-microscope"></i>
-        </div>
-        <h3>30 Năm Kinh Nghiệm R&D</h3>
-        <p>
-          Thừa hưởng công nghệ từ trụ sở Busan. Làm chủ nguồn nguyên liệu gốc và 
-          thiết kế công thức độc quyền, giúp Spa của bạn dẫn đầu xu hướng thị trường.
-        </p>
-      </div>
-
-      <div class="capability-card">
-        <div class="capability-icon">
-          <i class="fas fa-droplet"></i>
-        </div>
-        <h3>Công Thức "Phục Hồi Đa Tầng"</h3>
-        <p>
-          Chuyên biệt cho da nhạy cảm & sau điều trị xâm lấn. Tác động êm dịu, 
-          không châm chích – "Liều thuốc tinh thần" xoa dịu làn da tức thì.
-        </p>
-      </div>
-
-      <div class="capability-card">
-        <div class="capability-icon">
-          <i class="fas fa-shield-halved"></i>
-        </div>
-        <h3>Bảo Chứng Quốc Tế</h3>
-        <p>
-          An toàn tuyệt đối về pháp lý và sức khỏe. Phù hợp hoàn hảo cho các 
-          phác đồ điều trị chuyên sâu tại Clinic/Spa.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PHẦN 3: KHO MẪU CÔNG THỨC -->
-<section class="section odm-products">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">💎 Portfolio</span>
-      <h2 class="section-title">Giải Pháp Sản Phẩm Toàn Diện Cho Thương Hiệu Của Bạn</h2>
-      <p class="section-subtitle">Hơn 1000+ công thức gốc sẵn sàng tùy biến theo yêu cầu riêng</p>
-    </div>
-
-    <div class="odm-product-grid">
-      <!-- Dòng Làm Sạch -->
-      <div class="odm-product-box">
-        <div class="product-box-icon">
-          <i class="fas fa-soap"></i>
-        </div>
-        <h3>Dòng Làm Sạch (Cleansing)</h3>
-        <p class="product-sample"><strong>Sản phẩm mẫu:</strong> Sữa rửa mặt dạng dầu SkinN & Gel rửa mặt pH 5.5</p>
-        <p class="product-features">
-          <i class="fas fa-check"></i> Làm sạch sâu nhưng giữ ẩm, không gây khô căng
-        </p>
-        <p class="product-odm">
-          <strong>Gợi ý ODM:</strong> Tùy chỉnh mùi hương, bổ sung BHA/AHA
-        </p>
-      </div>
-
-      <!-- Dòng Điều Trị -->
-      <div class="odm-product-box">
-        <div class="product-box-icon">
           <i class="fas fa-flask"></i>
         </div>
-        <h3>Dòng Điều Trị Chuyên Sâu (Treatment)</h3>
-        <p class="product-sample"><strong>Sản phẩm mẫu:</strong> Serum SkinN Lifting Wrinkle (90ml)</p>
-        <p class="product-features">
-          <i class="fas fa-check"></i> Cấp ẩm tức thì, hiệu ứng căng bóng nâng cơ chuẩn Hàn
-        </p>
-        <p class="product-odm">
-          <strong>Gợi ý ODM:</strong> Tăng nồng độ hoạt chất, thay đổi kết cấu lỏng/đặc
+        <h3>Lựa chọn và cung cấp nguyên liệu thô</h3>
+        <p>
+          Lựa chọn công thức tối ưu cho từng sản phẩm, đảm bảo tính hữu dụng, chất lượng và thành phần chính của các loại nguyên liệu thô khác nhau. 
+          Chúng tôi tiến hành đánh giá toàn diện về nội dung, công dụng và an toàn để mang đến sản phẩm hoàn hảo nhất.
         </p>
       </div>
 
-      <!-- Dòng Phục Hồi -->
-      <div class="odm-product-box">
-        <div class="product-box-icon">
-          <i class="fas fa-heart-pulse"></i>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <i class="fas fa-clipboard-check"></i>
         </div>
-        <h3>Dòng Phục Hồi & Khóa Ẩm (Recovery)</h3>
-        <p class="product-sample"><strong>Sản phẩm mẫu:</strong> Kem dưỡng Sea Cucumber Aqua Hyaluronic (80g)</p>
-        <p class="product-features">
-          <i class="fas fa-check"></i> Dành cho da cực khô/da yếu, khóa ẩm đa tầng
-        </p>
-        <p class="product-odm">
-          <strong>Gợi ý ODM:</strong> Thêm thành phần làm dịu (B5, Rau má)
+        <h3>Kiểm soát chất lượng</h3>
+        <p>
+          Quản lý trực tiếp toàn bộ quy trình sản xuất từ nguyên liệu thô đến thành phẩm. 
+          Kiểm tra phân tích theo tiêu chuẩn chất lượng nghiêm ngặt để đảm bảo tính ổn định của sản phẩm. 
+          Ứng dụng thực tiễn dựa trên các bài báo nghiên cứu khoa học và các nghiên cứu có hệ thống, 
+          cung cấp thông tin chức năng minh bạch và đáng tin cậy.
         </p>
       </div>
 
-      <!-- Dòng Bảo Vệ -->
-      <div class="odm-product-box">
-        <div class="product-box-icon">
-          <i class="fas fa-sun"></i>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <i class="fas fa-globe"></i>
         </div>
-        <h3>Dòng Bảo Vệ (Protection)</h3>
-        <p class="product-sample"><strong>Sản phẩm mẫu:</strong> Kem chống nắng Ceramide Skinen (50ml)</p>
-        <p class="product-features">
-          <i class="fas fa-check"></i> Phổ rộng, không cay mắt, an toàn cho da nhạy cảm
-        </p>
-        <p class="product-odm">
-          <strong>Gợi ý ODM:</strong> Tùy chỉnh nâng tone hoặc không màu
+        <h3>Khả năng xuất khẩu ra nước ngoài</h3>
+        <p>
+          Sự mở rộng vững chắc của ngành công nghiệp làm đẹp toàn cầu. 
+          Thông qua chứng nhận FDA, ISO 22716 và các tiêu chuẩn quốc tế khác, 
+          chúng tôi cung cấp sản phẩm với độ tin cậy cao, đáp ứng mọi yêu cầu xuất khẩu khắt khe nhất.
         </p>
       </div>
-    </div>
-
-    <div class="text-center" style="margin-top: 48px;">
-      <a href="#contact-form" class="btn btn-primary btn-lg">
-        <i class="fas fa-vial"></i> YÊU CẦU GỬI MẪU TEST (SAMPLE)
-      </a>
-      <p style="margin-top: 16px; color: #059669; font-weight: 600;">
-        ✨ Miễn phí gửi mẫu thử cho đơn vị Spa/Clinic đăng ký lần đầu
-      </p>
     </div>
   </div>
 </section>
 
-<!-- PHẦN 4: QUY TRÌNH HỢP TÁC -->
+<!-- PHẦN 3: QUY TRÌNH HỢP TÁC -->
 <section class="section odm-workflow" id="workflow">
   <div class="container">
-    <div class="section-header">
-      <span class="section-badge">📋 Quy trình</span>
-      <h2 class="section-title">Quy Trình Sản Xuất Chuẩn ISO 22716</h2>
+    <!-- ODM Process -->
+    <div class="workflow-container">
+      <div class="workflow-header">
+        <span class="section-badge">Quy trình ODM</span>
+        <h2 class="section-title">Sản xuất theo đơn đặt hàng (ODM)</h2>
+        <p class="section-subtitle">Một phương pháp sản xuất trong đó nhà sản xuất chịu trách nhiệm toàn bộ quy trình, bao gồm nghiên cứu, phát triển, thiết kế và sản xuất hoàn chỉnh sản phẩm.</p>
+      </div>
+
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Yêu cầu từ văn phòng khách hàng</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Tư vấn kinh doanh</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Hợp đồng</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3>Phát triển công thức và các nhãn mẫu</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <h3>Biên nhận nguyên vật liệu</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">06</div>
+          <div class="step-content">
+            <h3>Sản xuất</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">07</div>
+          <div class="step-content">
+            <h3>Giao hàng</h3>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="workflow-steps">
-      <div class="workflow-step">
-        <div class="step-number">01</div>
-        <h3>Tư Vấn & Định Hướng</h3>
-        <p>Chọn sản phẩm mẫu, chốt ý tưởng thương hiệu</p>
+    <!-- OEM Process -->
+    <div class="workflow-container" style="margin-top: 100px;">
+      <div class="workflow-header">
+        <span class="section-badge">Quy trình OEM</span>
+        <h2 class="section-title">Nhà sản xuất thiết bị gốc (OEM)</h2>
+        <p class="section-subtitle">Một phương pháp sản xuất trong đó sản phẩm được phát triển theo yêu cầu của khách hàng và được nhà sản xuất gia công, sản xuất theo đúng thiết kế để phân phối dưới thương hiệu của khách hàng.</p>
       </div>
 
-      <div class="workflow-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Yêu cầu từ văn phòng khách hàng</h3>
+          </div>
+        </div>
 
-      <div class="workflow-step">
-        <div class="step-number">02</div>
-        <h3>R&D & Mẫu Thử</h3>
-        <p>Phòng Lab điều chỉnh công thức, gửi mẫu test</p>
-      </div>
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
 
-      <div class="workflow-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+        <div class="workflow-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Tư vấn kinh doanh</h3>
+          </div>
+        </div>
 
-      <div class="workflow-step">
-        <div class="step-number">03</div>
-        <h3>Kiểm Nghiệm (Testing)</h3>
-        <p>Kiểm tra độ ổn định, kích ứng da, vi sinh</p>
-      </div>
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
 
-      <div class="workflow-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+        <div class="workflow-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Hợp đồng</h3>
+          </div>
+        </div>
 
-      <div class="workflow-step">
-        <div class="step-number">04</div>
-        <h3>Sản Xuất & QC</h3>
-        <p>Gia công trên dây chuyền chuẩn GMP/ISO</p>
-      </div>
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
 
-      <div class="workflow-arrow">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+        <div class="workflow-step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3>Phát triển thiết kế và các nhãn mẫu nêm sản phẩm</h3>
+          </div>
+        </div>
 
-      <div class="workflow-step">
-        <div class="step-number">05</div>
-        <h3>Pháp Lý & Giao Hàng</h3>
-        <p>Hỗ trợ công bố, thiết kế bao bì và bàn giao</p>
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <h3>Biên nhận nguyên vật liệu</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">06</div>
+          <div class="step-content">
+            <h3>Sản xuất</h3>
+          </div>
+        </div>
+
+        <div class="workflow-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">07</div>
+          <div class="step-content">
+            <h3>Giao hàng</h3>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -237,58 +309,100 @@
   </div>
 </section>
 
-<!-- PHẦN 6: FORM ĐĂNG KÝ & FOOTER -->
+<!-- PHẦN 6: FORM ĐĂNG KÝ -->
 <section class="section odm-contact" id="contact-form">
   <div class="container">
     <div class="contact-wrapper">
       <div class="contact-form-area">
-        <h2>ĐĂNG KÝ NHẬN TƯ VẤN & BÁO GIÁ</h2>
-        <p class="form-description">
-          Nhận ngay Bản tin Xu hướng K-Beauty 3.0 và Chính sách trợ giá độc quyền từ nhà máy SkinHealth.
-        </p>
+        <div class="newsletter-header">
+          <h2 class="section-title">Đăng ký nhận tư vấn miễn phí</h2>
+          <p class="section-subtitle">
+            Để lại thông tin, chuyên gia của chúng tôi sẽ liên hệ trong 24h để tư vấn giải pháp phù hợp nhất cho doanh nghiệp của bạn
+          </p>
+        </div>
 
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-          <div class="form-group">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Họ và tên *"
-              [(ngModel)]="formData.name"
-              name="name"
-              required
-            />
+        <form class="newsletter-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Họ và tên *</label>
+              <input 
+                type="text" 
+                id="name"
+                class="form-control" 
+                placeholder="Nguyễn Văn A"
+                [(ngModel)]="formData.name"
+                name="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input 
+                type="email" 
+                id="email"
+                class="form-control" 
+                placeholder="email@example.com"
+                [(ngModel)]="formData.email"
+                name="email"
+                required
+              />
+            </div>
           </div>
 
-          <div class="form-group">
-            <input 
-              type="tel" 
-              class="form-control" 
-              placeholder="Số điện thoại/Zalo *"
-              [(ngModel)]="formData.phone"
-              name="phone"
-              required
-            />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Số điện thoại</label>
+              <input 
+                type="tel" 
+                id="phone"
+                class="form-control" 
+                placeholder="090 123 4567"
+                [(ngModel)]="formData.phone"
+                name="phone"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="businessType">Loại hình kinh doanh</label>
+              <select 
+                id="businessType"
+                class="form-control" 
+                [(ngModel)]="formData.businessType"
+                name="businessType"
+              >
+                <option value="" disabled selected>-- Chọn loại hình --</option>
+                <option value="spa">Spa/Clinic</option>
+                <option value="company">Doanh nghiệp mỹ phẩm</option>
+                <option value="retail">Bán lẻ/Phân phối</option>
+                <option value="other">Khác</option>
+              </select>
+            </div>
           </div>
 
-          <div class="form-group">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Sản phẩm quan tâm"
-              [(ngModel)]="formData.product"
-              name="product"
-            />
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input 
+                type="checkbox" 
+                [(ngModel)]="formData.agree"
+                name="agree"
+                required
+              />
+              <span>Tôi đồng ý nhận thông tin tư vấn và ưu đãi từ SkinHealth</span>
+            </label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block">
-            <i class="fas fa-paper-plane"></i> GỬI YÊU CẦU NGAY
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!contactForm.valid">
+            <i class="fas fa-paper-plane"></i> Đăng ký ngay
           </button>
 
+          <p class="form-note">* Thông tin của bạn sẽ được bảo mật tuyệt đối</p>
+
           <div class="alert alert-success" *ngIf="successMessage">
-            <i class="fas fa-check-circle"></i> {{ successMessage }}
+            {{ successMessage }}
           </div>
           <div class="alert alert-danger" *ngIf="errorMessage">
-            <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+            {{ errorMessage }}
           </div>
         </form>
       </div>
@@ -297,50 +411,105 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="odm-footer">
+<footer class="footer">
   <div class="container">
     <div class="footer-main">
-      <div class="footer-col">
-        <h3 class="footer-title">Về SkinHealth</h3>
-        <div class="footer-logo">
-          <i class="fas fa-leaf"></i>
+      <!-- Company Info & Certifications -->
+      <div class="footer-column footer-about">
+        <a href="/" class="footer-logo">
+          <img src="/assets/images/logo.png" alt="SkinHealth Logo" class="logo-img">
           <span>SkinHealth</span>
+        </a>
+        <p class="footer-desc">
+          Nơi vẻ đẹp bắt đầu từ sự thấu hiểu. Chuyên gia ODM/OEM mỹ phẩm da liễu hàng đầu Việt Nam.
+        </p>
+        <div class="footer-certifications">
+          <span class="cert-badge"><i class="fas fa-certificate"></i> ISO 22716</span>
+          <span class="cert-badge"><i class="fas fa-shield-alt"></i> GMP</span>
+          <span class="cert-badge"><i class="fas fa-check-circle"></i> FDA</span>
         </div>
-        <p><strong>Trụ sở:</strong> Busan, Hàn Quốc</p>
-        <p><strong>VP Đại diện:</strong> 669 Đỗ Mười, P. Linh Xuân, TP. Thủ Đức, TP. HCM</p>
-        <p><strong>Hotline Đối tác:</strong> <a href="tel:0817130135">0817.130.135</a></p>
-        <p><strong>Email:</strong> <a href="mailto:partner@skinhealth.com">partner@skinhealth.com</a></p>
       </div>
 
-      <div class="footer-col">
-        <h3 class="footer-title">Hỗ trợ Đối tác</h3>
-        <ul class="footer-links">
-          <li><a href="#workflow">Quy trình ODM/OEM</a></li>
-          <li><a href="#">Chính sách Bảo mật & Điều khoản</a></li>
-          <li><a href="#">Chính sách Đổi trả & Bảo hành</a></li>
-          <li><a href="#contact-form">Liên hệ hợp tác</a></li>
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h4 class="footer-title">Liên hệ (Contact Us)</h4>
+        <ul class="footer-links footer-contact">
+          <li>
+            <i class="fas fa-building"></i>
+            <div>
+              <strong>CÔNG TY TNHH SKINHEALTH VIỆT NAM</strong><br>
+              Trụ sở chính: Busan, Hàn Quốc
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              Văn phòng đại diện:<br>
+              669 Đỗ Mười, Phường Linh Xuân,<br>
+              TP. Thủ Đức (TP. HCM)
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <a href="tel:0817130135">Hotline: 0817.130.135</a>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:partner@skinhealth.com">partner@skinhealth.com</a>
+          </li>
+          <li>
+            <i class="fas fa-clock"></i>
+            8:00 - 17:30 (Thứ 2 - Thứ 7)
+          </li>
         </ul>
       </div>
 
-      <div class="footer-col">
-        <h3 class="footer-title">Chứng nhận & Kết nối</h3>
-        <div class="certifications">
-          <span class="cert-badge">FDA</span>
-          <span class="cert-badge">ISO 22716</span>
-          <span class="cert-badge">GMP</span>
-          <span class="cert-badge">Samsung Insurance</span>
-        </div>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fas fa-comments"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
+      <!-- Support Links -->
+      <div class="footer-column">
+        <h4 class="footer-title">Hỗ trợ khách hàng (Support)</h4>
+        <ul class="footer-links">
+          <li><a href="#workflow">Quy trình ODM/OEM</a></li>
+          <li><a routerLink="/faq">Câu hỏi thường gặp (FAQs)</a></li>
+        </ul>
+      </div>
+
+      <!-- Policy Links -->
+      <div class="footer-column">
+        <h4 class="footer-title">Chính sách (Policy)</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/privacy-policy">Chính sách bảo mật thông tin</a></li>
+          <li><a routerLink="/terms-of-use">Điều khoản sử dụng</a></li>
+          <li><a routerLink="/return-policy">Chính sách đổi trả & Bảo hành</a></li>
+        </ul>
       </div>
     </div>
 
+    <!-- Social Links Section -->
+    <div class="footer-social-section">
+      <h4 class="footer-social-title">Kết nối với chúng tôi</h4>
+      <div class="social-links">
+        <a href="https://facebook.com/skinhealth" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://zalo.me/0817130135" target="_blank" aria-label="Zalo">
+          <i class="fas fa-comment-dots"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright & Disclaimer -->
     <div class="footer-bottom">
-      <p>© 2024 SkinHealth Cosmetic. Website vận hành bởi Hệ thống Công nghệ SkinHealth.</p>
-      <p class="disclaimer">Sản phẩm không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.</p>
+      <div class="footer-copyright">
+        <p>&copy; 2024 SkinHealth Cosmetic. Bảo lưu mọi quyền.</p>
+        <p class="footer-disclaimer">
+          <i class="fas fa-info-circle"></i>
+          Lưu ý: Sản phẩm không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh. 
+          Hiệu quả tùy thuộc vào cơ địa từng người.
+        </p>
+      </div>
+      <div class="footer-credit">
+        <p>Website vận hành bởi Hệ thống Công nghệ SkinHealth</p>
+      </div>
     </div>
   </div>
 </footer>

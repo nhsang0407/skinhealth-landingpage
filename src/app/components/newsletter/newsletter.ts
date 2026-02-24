@@ -22,14 +22,17 @@ export class Newsletter {
   constructor(private http: HttpClient) {}
 
   onSubmit() {
+    // Clear previous messages first
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    // Validate agreement checkbox
     if (!this.formData.agree) {
       this.errorMessage = 'Vui lòng đồng ý nhận thông tin từ SkinHealth';
       return;
     }
 
-    this.successMessage = '';
-    this.errorMessage = '';
-
+    // Submit form data to backend
     this.http.post('http://localhost:3000/api/subscribe', this.formData)
       .subscribe({
         next: (response: any) => {

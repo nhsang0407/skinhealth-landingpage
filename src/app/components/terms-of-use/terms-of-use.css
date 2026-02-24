@@ -1,6 +1,180 @@
-﻿/* Terms of Use Luxury Design */
-/* Inherits base styles from privacy-policy.css */
+/* Terms of Use Luxury Design */
+.policy-page {
+  min-height: 100vh;
+  background: var(--gradient-soft);
+}
 
+.policy-header {
+  background: var(--gradient-primary);
+  padding: 100px 0 60px;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.policy-header::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: 28px;
+  opacity: 0.95;
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+.policy-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.policy-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.policy-content {
+  padding: 80px 0;
+}
+
+.policy-section {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--pearl);
+  transition: all var(--transition-base);
+}
+
+.policy-section:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--dusty-rose);
+}
+
+.policy-section h2 {
+  color: var(--charcoal);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-serif);
+}
+
+.policy-section h2 i {
+  font-size: 1.6rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.policy-section p {
+  color: var(--warm-gray);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+
+.policy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.policy-section ul li {
+  color: var(--warm-gray);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  padding: 16px 20px 16px 40px;
+  position: relative;
+  border-left: 3px solid var(--rose-gold);
+  margin-bottom: 12px;
+  background: var(--soft-pink);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.policy-section ul li:hover {
+  background: var(--blush);
+  padding-left: 48px;
+}
+
+.policy-section ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 14px;
+  color: var(--rose-gold);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.policy-section strong {
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.contact-box {
+  background: var(--gradient-soft);
+  border-left: 4px solid var(--rose-gold);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  margin-top: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-box p {
+  margin: 12px 0;
+  color: var(--charcoal);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.contact-box i {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.3rem;
+}
+
+/* Terms-specific styles */
 .warning-box {
   background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
   border-left: 4px solid #ef4444;
@@ -61,6 +235,12 @@
 }
 
 @media (max-width: 768px) {
+  .policy-header { padding: 100px 0 60px; }
+  .policy-title { font-size: 2.5rem; }
+  .policy-content { padding: 60px 0; }
+  .policy-section { padding: 32px 24px; }
+  .policy-section h2 { font-size: 1.5rem; }
+  
   .warning-box,
   .info-box,
   .important-note {

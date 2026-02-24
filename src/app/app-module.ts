@@ -10,7 +10,6 @@ import { OdmServices } from './components/odm-services/odm-services';
 import { TrustIndicators } from './components/trust-indicators/trust-indicators';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
-import { OemServices } from './components/oem-services/oem-services';
 import { CtaSection } from './components/cta-section/cta-section';
 import { Newsletter } from './components/newsletter/newsletter';
 import { OdmPage } from './components/odm-page/odm-page';
@@ -30,7 +29,6 @@ import { Faqs } from './components/faqs/faqs';
     TrustIndicators,
     Footer,
     Header,
-    OemServices,
     CtaSection,
     Newsletter,
     OdmPage,

@@ -136,29 +136,83 @@
   text-align: center;
   transition: all var(--transition-base);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(183, 110, 121, 0.05) 0%, rgba(212, 165, 165, 0.05) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
 }
 
 .cert-item:hover {
-  background: var(--soft-pink);
+  background: var(--white);
   border-color: var(--rose-gold);
-  transform: scale(1.05);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(183, 110, 121, 0.25);
 }
 
-.cert-item i {
-  font-size: 3rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block;
-  margin-bottom: 16px;
+.cert-item:hover::before {
+  opacity: 1;
+}
+
+.cert-image {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-soft);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 1;
+}
+
+.cert-item:hover .cert-image {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
+}
+
+.cert-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  transition: all var(--transition-base);
+}
+
+.cert-item:hover .cert-image img {
+  filter: drop-shadow(0 4px 16px rgba(183, 110, 121, 0.3));
 }
 
 .cert-name {
   font-weight: 600;
   color: var(--charcoal);
   font-size: 1.05rem;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  transition: all var(--transition-base);
+}
+
+.cert-item:hover .cert-name {
+  color: var(--rose-gold);
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {

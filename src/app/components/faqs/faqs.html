@@ -1,30 +1,33 @@
-<app-header></app-header>
-
-<section class="faqs-section">
-  <div class="container">
-    <div class="section-header">
-      <h1>Frequently Asked Questions</h1>
-      <p>Find answers to common questions about our ODM services</p>
-    </div>
-
-    <div class="faqs-container">
-      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="faq.open">
-        <div class="faq-question" (click)="toggleFaq(i)">
-          <h3>{{ faq.question }}</h3>
-          <span class="toggle-icon">{{ faq.open ? 'âˆ’' : '+' }}</span>
-        </div>
-        <div class="faq-answer" [class.show]="faq.open">
-          <p>{{ faq.answer }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-cta">
-      <h2>Still have questions?</h2>
-      <p>Contact our team for more information</p>
-      <a routerLink="/odm" class="cta-button">Contact Us</a>
+<div class="policy-page">
+  <div class="policy-header">
+    <div class="container">
+      <a routerLink="/" class="back-link"><i class="fas fa-arrow-left"></i> Quay lại trang chủ</a>
+      <h1 class="policy-title">Câu hỏi thường gặp (FAQs)</h1>
+      <p class="policy-subtitle">Giải đáp các thắc mắc phổ biến về dịch vụ ODM/OEM</p>
     </div>
   </div>
-</section>
 
-<app-footer></app-footer>
+  <div class="policy-content">
+    <div class="container">
+      <div class="faqs-container">
+        <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="faq.open">
+          <div class="faq-question" (click)="toggleFaq(i)">
+            <h3>{{ faq.question }}</h3>
+            <span class="toggle-icon">{{ faq.open ? '−' : '+' }}</span>
+          </div>
+          <div class="faq-answer" [class.show]="faq.open">
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <h2>Vẫn còn thắc mắc?</h2>
+        <p>Liên hệ với đội ngũ của chúng tôi để được tư vấn chi tiết hơn</p>
+        <a routerLink="/odm" class="cta-button">
+          <i class="fas fa-phone-alt"></i> Liên hệ ngay
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
