@@ -18,15 +18,24 @@
       </p>
       
       <div class="hero-buttons">
-        <a href="#newsletter" class="btn btn-primary">
-          <i class="fa-solid fa-briefcase"></i>
-          Tư Vấn ODM / OEM
-        </a>
-        <a href="#products" class="btn btn-secondary">
-          <i class="fa-solid fa-microscope"></i>
-          Khám Phá Sản Phẩm
-        </a>
-      </div>
+          <a 
+            href="#newsletter" 
+            class="btn btn-primary"
+            (click)="trackHeroCTA('click_odm_hero', 'Hero ODM Consultation')"
+          >
+            <i class="fa-solid fa-briefcase"></i>
+            Tư Vấn ODM / OEM
+          </a>
+
+          <a 
+            href="#products" 
+            class="btn btn-secondary"
+            (click)="trackHeroCTA('click_explore_products', 'Hero Explore Products')"
+          >
+            <i class="fa-solid fa-microscope"></i>
+            Khám Phá Sản Phẩm
+          </a>
+        </div>
     </div>
     
     <div class="scroll-indicator">

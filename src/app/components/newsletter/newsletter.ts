@@ -1,6 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+declare var gtag: Function;
+
 @Component({
   selector: 'app-newsletter',
   templateUrl: './newsletter.html',
@@ -36,7 +38,16 @@ export class Newsletter {
     this.http.post('http://localhost:3000/api/subscribe', this.formData)
       .subscribe({
         next: (response: any) => {
-          this.successMessage = response.message || 'Đăng ký thành công!';
+        this.successMessage = response.message || 'Đăng ký thành công!';
+
+        // 🔥 Gửi event GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_submit', {
+            event_category: 'engagement',
+            event_label: 'newsletter_form'
+            });
+          }
+
           this.resetForm();
         },
         error: (error) => {
