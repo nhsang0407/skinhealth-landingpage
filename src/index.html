@@ -16,7 +16,7 @@
     gtag('config', 'G-2LRWK70GWS');
   </script>
 
-  <!-- Google Fonts - Plus Jakarta Sans -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,7 +24,46 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
   <app-root></app-root>
+
+  <!-- Chatbase Chatbot -->
+  <script>
+  (function(){
+    if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+      window.chatbase = (...arguments)=>{
+        if(!window.chatbase.q){
+          window.chatbase.q=[]
+        }
+        window.chatbase.q.push(arguments)
+      };
+
+      window.chatbase = new Proxy(window.chatbase,{
+        get(target,prop){
+          if(prop==="q"){
+            return target.q
+          }
+          return (...args)=>target(prop,...args)
+        }
+      })
+    }
+
+    const onLoad=function(){
+      const script=document.createElement("script");
+      script.src="https://www.chatbase.co/embed.min.js";
+      script.id="MBDUrQslO8FrUV46Gmi6R";
+      script.domain="www.chatbase.co";
+      document.body.appendChild(script)
+    };
+
+    if(document.readyState==="complete"){
+      onLoad()
+    }else{
+      window.addEventListener("load",onLoad)
+    }
+  })();
+  </script>
+
 </body>
 </html>

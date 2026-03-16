@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 declare var gtag: Function;
 
@@ -10,6 +9,17 @@ declare var gtag: Function;
   standalone: false
 })
 export class Newsletter {
+  private readonly hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244815510/a441952d-477d-45fe-b0c8-7187d95f135d';
+
+  private readonly businessTypeMap: Record<string, string> = {
+    spa: 'Spa / Thẩm mỹ viện',
+    clinic: 'Phòng khám da liễu',
+    retail: 'Cửa hàng bán lẻ',
+    brand: 'Thương hiệu mỹ phẩm',
+    company: 'Thương hiệu mỹ phẩm',
+    other: 'Khác'
+  };
+
   formData = {
     name: '',
     email: '',
@@ -21,39 +31,61 @@ export class Newsletter {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  onSubmit() {
-    // Clear previous messages first
+  async onSubmit() {
     this.successMessage = '';
     this.errorMessage = '';
 
-    // Validate agreement checkbox
     if (!this.formData.agree) {
       this.errorMessage = 'Vui lòng đồng ý nhận thông tin từ SkinHealth';
       return;
     }
 
-    // Submit form data to backend
-    this.http.post('http://localhost:3000/api/subscribe', this.formData)
-      .subscribe({
-        next: (response: any) => {
-        this.successMessage = response.message || 'Đăng ký thành công!';
+    if (!this.formData.name || !this.formData.email) {
+      this.errorMessage = 'Vui lòng điền đầy đủ thông tin bắt buộc';
+      return;
+    }
 
-        // 🔥 Gửi event GA4
-        if (typeof gtag === 'function') {
-          gtag('event', 'newsletter_submit', {
-            event_category: 'engagement',
-            event_label: 'newsletter_form'
-            });
-          }
+    const payload = {
+      fields: [
+        { name: 'firstname', value: this.formData.name.trim() },
+        { name: 'email', value: this.formData.email.trim() },
+        { name: 'phone', value: this.formData.phone.trim() },
+        { name: 'business_type', value: this.businessTypeMap[this.formData.business] || this.formData.business }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
 
-          this.resetForm();
+    try {
+      const response = await fetch(this.hubspotEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        error: (error) => {
-          this.errorMessage = error.error?.message || 'Có lỗi xảy ra, vui lòng thử lại!';
-        }
+        body: JSON.stringify(payload)
       });
+
+      if (!response.ok) {
+        throw new Error('HubSpot submit failed');
+      }
+
+      this.successMessage = 'Đăng ký thành công';
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_submit', {
+          event_category: 'engagement',
+          event_label: 'newsletter_form'
+        });
+      }
+
+      this.resetForm();
+    } catch {
+      this.errorMessage = 'Có lỗi xảy ra, vui lòng thử lại!';
+    }
   }
 
   resetForm() {

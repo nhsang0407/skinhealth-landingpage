@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 declare let gtag: Function;
 
@@ -16,6 +15,16 @@ interface CherryPetal {
   standalone: false
 })
 export class OdmPage implements OnInit {
+  private readonly hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244815510/a441952d-477d-45fe-b0c8-7187d95f135d';
+
+  private readonly businessTypeMap: Record<string, string> = {
+    spa: 'Spa / Thẩm mỹ viện',
+    clinic: 'Phòng khám da liễu',
+    retail: 'Cửa hàng bán lẻ',
+    brand: 'Thương hiệu mỹ phẩm',
+    company: 'Thương hiệu mỹ phẩm',
+    other: 'Khác'
+  };
 
   petals: CherryPetal[] = [];
   
@@ -30,7 +39,13 @@ export class OdmPage implements OnInit {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
+
+  private trackEvent(eventName: string, params: Record<string, string>) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params);
+    }
+  }
 
   ngOnInit() {
     for (let i = 0; i < 15; i++) {
@@ -41,8 +56,7 @@ export class OdmPage implements OnInit {
       });
     }
 
-    // Track page view riêng cho ODM page
-    gtag('event', 'view_odm_page', {
+    this.trackEvent('view_odm_page', {
       event_category: 'page_view',
       event_label: 'ODM Landing'
     });
@@ -53,15 +67,14 @@ export class OdmPage implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Track click CTA scroll
-      gtag('event', 'click_odm_register_button', {
+      this.trackEvent('click_odm_register_button', {
         event_category: 'cta_click',
         event_label: 'ODM Register Button'
       });
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.successMessage = '';
     this.errorMessage = '';
 
@@ -75,36 +88,52 @@ export class OdmPage implements OnInit {
       return;
     }
 
-    // Track submit attempt
-    gtag('event', 'submit_odm_form', {
+    this.trackEvent('submit_odm_form', {
       event_category: 'form_submit',
       event_label: 'ODM Consultation Form'
     });
 
-    this.http.post('http://localhost:3000/api/subscribe', this.formData)
-      .subscribe({
-        next: (response: any) => {
+    const payload = {
+      fields: [
+        { name: 'firstname', value: this.formData.name.trim() },
+        { name: 'email', value: this.formData.email.trim() },
+        { name: 'phone', value: this.formData.phone.trim() },
+        { name: 'business_type', value: this.businessTypeMap[this.formData.businessType] || this.formData.businessType }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
 
-          // Track successful conversion
-          gtag('event', 'odm_form_success', {
-            event_category: 'conversion',
-            event_label: 'ODM Lead Success'
-          });
-
-          this.successMessage = 'Chúng tôi sẽ liên hệ với bạn trong 24h!';
-          this.resetForm();
+    try {
+      const response = await fetch(this.hubspotEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        error: (error) => {
-
-          // Track error
-          gtag('event', 'odm_form_error', {
-            event_category: 'error',
-            event_label: 'ODM Form Error'
-          });
-
-          this.errorMessage = 'Có lỗi xảy ra, vui lòng thử lại!';
-        }
+        body: JSON.stringify(payload)
       });
+
+      if (!response.ok) {
+        throw new Error('HubSpot submit failed');
+      }
+
+      this.trackEvent('odm_form_success', {
+        event_category: 'conversion',
+        event_label: 'ODM Lead Success'
+      });
+
+      this.successMessage = 'Đăng ký thành công';
+      this.resetForm();
+    } catch {
+      this.trackEvent('odm_form_error', {
+        event_category: 'error',
+        event_label: 'ODM Form Error'
+      });
+
+      this.errorMessage = 'Có lỗi xảy ra, vui lòng thử lại!';
+    }
   }
 
   resetForm() {
