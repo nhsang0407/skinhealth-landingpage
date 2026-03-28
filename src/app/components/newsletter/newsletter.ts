@@ -12,6 +12,7 @@ export class Newsletter {
   private readonly hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244815510/a441952d-477d-45fe-b0c8-7187d95f135d';
   private readonly backendSubscribePath = '/api/subscribe';
   private readonly emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  private readonly allowedBusinessTypes = new Set(['spa', 'clinic', 'retail', 'brand', 'other']);
 
   private readonly businessTypeMap: Record<string, string> = {
     spa: 'Spa / Thẩm mỹ viện',
@@ -47,6 +48,11 @@ export class Newsletter {
     const escapedName = cookieName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const match = document.cookie.match(new RegExp(`(?:^|; )${escapedName}=([^;]*)`));
     return match ? decodeURIComponent(match[1]) : '';
+  }
+
+  private normalizeBusinessType(value: string): string {
+    const normalized = value.trim().toLowerCase();
+    return this.allowedBusinessTypes.has(normalized) ? normalized : 'other';
   }
 
   private async submitToBackend(name: string, email: string, businessType: string): Promise<void> {
@@ -107,17 +113,17 @@ export class Newsletter {
       context.hutk = hutk;
     }
 
+    const normalizedBusinessType = this.normalizeBusinessType(this.formData.business);
     const payload = {
       fields: [
         { name: 'firstname', value: this.formData.name.trim() },
         { name: 'email', value: normalizedEmail },
         { name: 'phone', value: this.formData.phone.trim() },
-        { name: 'business_type', value: this.businessTypeMap[this.formData.business] || this.formData.business }
+        { name: 'business_type', value: this.businessTypeMap[normalizedBusinessType] || normalizedBusinessType }
       ],
       context
     };
 
-    const businessType = this.businessTypeMap[this.formData.business] || this.formData.business;
     const normalizedName = this.formData.name.trim();
 
     try {
@@ -133,7 +139,7 @@ export class Newsletter {
         throw new Error('HubSpot submit failed');
       }
 
-      await this.submitToBackend(normalizedName, normalizedEmail, businessType);
+      await this.submitToBackend(normalizedName, normalizedEmail, normalizedBusinessType);
 
       this.successMessage = 'Đăng ký thành công';
 
