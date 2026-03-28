@@ -10,6 +10,7 @@ declare var gtag: Function;
 })
 export class Newsletter {
   private readonly hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244815510/a441952d-477d-45fe-b0c8-7187d95f135d';
+  private readonly backendSubscribeEndpoint = 'http://localhost:3000/api/subscribe';
   private readonly emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   private readonly businessTypeMap: Record<string, string> = {
@@ -46,6 +47,26 @@ export class Newsletter {
     const escapedName = cookieName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const match = document.cookie.match(new RegExp(`(?:^|; )${escapedName}=([^;]*)`));
     return match ? decodeURIComponent(match[1]) : '';
+  }
+
+  private async submitToBackend(name: string, email: string, businessType: string): Promise<void> {
+    const response = await fetch(this.backendSubscribeEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        business_type: businessType
+      })
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => null);
+      const message = typeof errorBody?.message === 'string' ? errorBody.message : 'Backend subscribe failed';
+      throw new Error(message);
+    }
   }
 
   async onSubmit() {
@@ -89,6 +110,9 @@ export class Newsletter {
       context
     };
 
+    const businessType = this.businessTypeMap[this.formData.business] || this.formData.business;
+    const normalizedName = this.formData.name.trim();
+
     try {
       const response = await fetch(this.hubspotEndpoint, {
         method: 'POST',
@@ -102,6 +126,8 @@ export class Newsletter {
         throw new Error('HubSpot submit failed');
       }
 
+      await this.submitToBackend(normalizedName, normalizedEmail, businessType);
+
       this.successMessage = 'Đăng ký thành công';
 
       if (typeof gtag === 'function') {
@@ -112,8 +138,8 @@ export class Newsletter {
       }
 
       this.resetForm();
-    } catch {
-      this.errorMessage = 'Có lỗi xảy ra, vui lòng thử lại!';
+    } catch (error) {
+      this.errorMessage = error instanceof Error ? error.message : 'Có lỗi xảy ra, vui lòng thử lại!';
     }
   }
 
