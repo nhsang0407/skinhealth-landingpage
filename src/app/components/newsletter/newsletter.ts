@@ -10,7 +10,7 @@ declare var gtag: Function;
 })
 export class Newsletter {
   private readonly hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/244815510/a441952d-477d-45fe-b0c8-7187d95f135d';
-  private readonly backendSubscribeEndpoint = 'http://localhost:3000/api/subscribe';
+  private readonly backendSubscribePath = '/api/subscribe';
   private readonly emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   private readonly businessTypeMap: Record<string, string> = {
@@ -50,7 +50,7 @@ export class Newsletter {
   }
 
   private async submitToBackend(name: string, email: string, businessType: string): Promise<void> {
-    const response = await fetch(this.backendSubscribeEndpoint, {
+    const response = await fetch(this.getBackendSubscribeEndpoint(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -67,6 +67,13 @@ export class Newsletter {
       const message = typeof errorBody?.message === 'string' ? errorBody.message : 'Backend subscribe failed';
       throw new Error(message);
     }
+  }
+
+  private getBackendSubscribeEndpoint(): string {
+    const host = window.location.hostname;
+    const isLocal = host === 'localhost' || host === '127.0.0.1';
+
+    return isLocal ? 'http://localhost:3000/api/subscribe' : this.backendSubscribePath;
   }
 
   async onSubmit() {
